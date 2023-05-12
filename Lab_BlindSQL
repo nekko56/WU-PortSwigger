@@ -3,7 +3,7 @@ https://portswigger.net/web-security/sql-injection/blind/lab-conditional-respons
  
 Đọc phần mô tả thì mình thấy là trang web dính lỗi blind SQL, sử dụng tracking cookie để phân tích, thực hiện truy vấn SQL và web sẽ hiển thị chuỗi “Welcome back” nếu có truy vấn được trả về. Cuối cùng là ta cần tìm ra password của administrator để solve được lab. Như vậy, ta cần tập trung khai thác vào cookie.
 Trước tiên, mở Burp Suite lên rồi mở web lên dạo một vòng, kích vào các chức năng xem thử thì khi vô tình mình thấy chuỗi “Welcome back” khi kích vào nút Home.
-
+![alt](<img width="468" alt="Picture1" src="https://github.com/nekko56/WU-PortSwigger/assets/128736824/ca614b3d-7bc5-48ee-9853-db42fc74040e">)
 Chứng tỏ có gì đó được truy vấn và trả về nên có chuỗi “Welcome back” xuất hiện. Vì bài lab gợi ý liên quan đến cookie nên mình mở cookie lên xem thì thấy có một trường TrackingId trong cookie
  
 Thử xóa đi rồi tải lại trang web thì chữ “Welcome back” không xuất hiện nữa. Nhấn lại một nút khác thì “Welcome back” lại xuất hiện  điều này chứng tỏ là lúc vừa mở trang web lên mình sẽ có 1 TrackingId, mỗi lần load lại trang thì sẽ có truy vấn kiểm tra xem cookie có tồn tại hay không? Nếu tồn tại thì sẽ hiển thị “Welcome back” và nếu không thì không hiển thị  như vậy mình thấy kết quả trả về có sự khác nhau giữa True và False nên mình sẽ dựa vào đây để khai thác tiếp.
@@ -35,10 +35,3 @@ Sắp xếp lại các payload 1 theo thứ tự từ 1 đến 20 và ghép các
 Bây giờ chỉ việc mang password đi đăng nhập thôi.
  
 Yep, đăng nhập thành công!!!
-
-
-
-
-
-
-
